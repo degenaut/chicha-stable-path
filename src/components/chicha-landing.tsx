@@ -1,11 +1,12 @@
-import { useState, type LucideIcon } from "react";
+import { useState } from "react";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   Building2,
   Check,
   ChevronRight,
   CircleDollarSign,
-  Contactless,
+  Nfc,
   Globe2,
   HandCoins,
   Linkedin,
@@ -153,7 +154,7 @@ function Hero() {
           </div>
           <div className="absolute bottom-5 left-5 right-5 grid grid-cols-[minmax(0,1fr)_auto] items-center rounded-lg border border-border bg-background/70 p-4 backdrop-blur-xl sm:bottom-8 sm:left-8 sm:right-8">
             <div className="min-w-0"><p className="text-xs text-muted-foreground">Payment activity</p><p className="mt-1 truncate text-sm font-medium text-foreground">Wallet-native. Non-custodial.</p></div>
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-cyan/10 text-cyan"><Contactless /></div>
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-cyan/10 text-cyan"><Nfc /></div>
           </div>
         </div>
       </div>
@@ -164,7 +165,7 @@ function Hero() {
 function RoleCard({ item }: { item: (typeof roleCards)[number] }) {
   const Icon = item.icon;
   return (
-    <article className={cn("group flex min-h-72 flex-col rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 sm:p-7", item.secondary ? "border-border/70 bg-card/35 hover:border-token/40" : "border-border bg-card/65 hover:border-primary/50 hover:shadow-glow-soft")}>
+    <article className={cn("group flex min-h-72 flex-col rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 sm:p-7", "secondary" in item ? "border-border/70 bg-card/35 hover:border-token/40" : "border-border bg-card/65 hover:border-primary/50 hover:shadow-glow-soft")}>
       <div className={cn("flex h-11 w-11 items-center justify-center rounded-md", item.tone === "cyan" ? "bg-cyan/10 text-cyan" : item.tone === "gold" ? "bg-token/10 text-token" : "bg-primary/15 text-primary")}><Icon /></div>
       <h3 className="mt-7 text-xl font-semibold text-foreground">{item.title}</h3>
       <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.copy}</p>
@@ -206,16 +207,16 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
       <div className="phone-shell">
         <div className="flex items-center justify-between text-xs text-muted-foreground"><span>ChiCha Wallet</span><ShieldCheck className="h-4 w-4 text-cyan" /></div>
         <p className="mt-10 text-xs text-muted-foreground">Available balance</p><p className="mt-2 text-3xl font-semibold text-foreground">2,480.00</p>
-        <div className="mt-9 grid grid-cols-3 gap-2">{[WalletCards, QrCode, Contactless].map((Icon, i) => <div key={i} className="flex h-12 items-center justify-center rounded-md bg-muted text-primary"><Icon className="h-5 w-5" /></div>)}</div>
+        <div className="mt-9 grid grid-cols-3 gap-2">{[WalletCards, QrCode, Nfc].map((Icon, i) => <div key={i} className="flex h-12 items-center justify-center rounded-md bg-muted text-primary"><Icon className="h-5 w-5" /></div>)}</div>
         <div className="mt-8 space-y-3">{["UCard activity", "Tap to Pay"].map((text) => <div key={text} className="flex items-center justify-between rounded-md border border-border p-3 text-xs text-muted-foreground"><span>{text}</span><span className="text-cyan">Ready</span></div>)}</div>
       </div>
-      <div className="absolute bottom-10 right-3 w-48 rotate-6 rounded-xl border border-border bg-primary-dark p-5 shadow-2xl sm:right-10"><p className="text-sm font-semibold text-foreground">ChiCha UCard</p><Contactless className="mt-8 text-cyan" /><p className="mt-8 text-xs text-muted-foreground">•••• 2046</p></div>
+      <div className="absolute bottom-10 right-3 w-48 rotate-6 rounded-xl border border-border bg-primary-dark p-5 shadow-2xl sm:right-10"><p className="text-sm font-semibold text-foreground">ChiCha UCard</p><Nfc className="mt-8 text-cyan" /><p className="mt-8 text-xs text-muted-foreground">•••• 2046</p></div>
     </div>
   );
   if (visual === "merchant") return (
     <div className="visual-stage items-center justify-center">
       <div className="relative w-72 rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan/10 text-cyan"><Contactless className="h-8 w-8" /></div>
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan/10 text-cyan"><Nfc className="h-8 w-8" /></div>
         <p className="mt-6 text-lg font-semibold text-foreground">Tap to Pay</p><p className="mt-2 text-sm text-muted-foreground">Ready for supported payments</p>
         <div className="mt-7 rounded-md bg-muted p-4"><QrCode className="mx-auto h-20 w-20 text-foreground" /></div>
       </div>
