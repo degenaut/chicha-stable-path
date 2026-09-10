@@ -71,10 +71,14 @@ const roleCards = [
   },
 ] as const;
 
-function Brand() {
+function Brand({ placement = "header" }: { placement?: "header" | "footer" }) {
   return (
-    <a href="#top" className="inline-flex items-center" aria-label="ChiCha home">
-      <img src={wordmarkAsset.url} alt="ChiCha" className="h-9 w-auto object-contain sm:h-10" />
+    <a href="#top" className="inline-flex max-w-full items-center" aria-label="ChiCha home">
+      <img
+        src={wordmarkAsset.url}
+        alt="ChiCha"
+        className={cn("w-auto max-w-full object-contain", placement === "footer" ? "h-12 sm:h-14" : "h-11 sm:h-12")}
+      />
     </a>
   );
 }
@@ -129,7 +133,7 @@ function Hero() {
       <div className="hero-glow absolute inset-0" />
       <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:px-10">
         <div className="z-10 max-w-3xl">
-          <Eyebrow>Stablecoin payments, built for everyone</Eyebrow>
+          <Eyebrow>Web3 payment infrastructure</Eyebrow>
           <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] text-foreground sm:text-6xl lg:text-7xl">
             Web3 payment infrastructure for <span className="text-gradient">stablecoin payments.</span>
           </h1>
@@ -220,11 +224,16 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   );
   if (visual === "merchant") return (
     <div className="visual-stage items-center justify-center">
-        <div className="relative w-72 rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
-          <img src={cMarkAsset.url} alt="" className="absolute left-5 top-5 h-8 w-8 rounded-full object-contain" />
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan/10 text-cyan"><Nfc className="h-8 w-8" /></div>
+      <div className="relative w-72 overflow-hidden rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
+        <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan/60 to-transparent" />
+        <div className="mx-auto grid h-28 w-28 place-items-center rounded-full border border-primary/20 bg-background/50 shadow-glow-soft">
+          <div className="relative grid h-20 w-20 place-items-center rounded-full border border-cyan/25 bg-cyan/10 text-cyan">
+            <img src={cMarkAsset.url} alt="" className="h-11 w-11 rounded-full object-contain" />
+            <Nfc className="absolute -right-3 h-7 w-7" aria-hidden="true" />
+          </div>
+        </div>
         <p className="mt-6 text-lg font-semibold text-foreground">Tap to Pay</p><p className="mt-2 text-sm text-muted-foreground">Ready for supported payments</p>
-        <div className="mt-7 rounded-md bg-muted p-4"><QrCode className="mx-auto h-20 w-20 text-foreground" /></div>
+        <div className="mt-7 rounded-md border border-border/70 bg-muted p-4"><QrCode className="mx-auto h-20 w-20 text-foreground" /></div>
       </div>
     </div>
   );
@@ -260,8 +269,11 @@ function TokenSection() {
   return (
     <section id="token" className="section-shell border-y border-border/60 bg-card/20">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-10">
-        <div className="flex min-h-72 items-center justify-center rounded-xl border border-border/60 bg-background/40">
-          <img src={tokenMarkAsset.url} alt="$CHI token" className="h-40 w-40 rounded-full object-contain opacity-90" />
+        <div className="relative flex min-h-72 items-center justify-center overflow-hidden rounded-xl border border-border/60 bg-background/40">
+          <div className="absolute h-52 w-52 rounded-full bg-primary/10 blur-3xl" />
+          <div className="relative rounded-full border border-primary/20 bg-card/50 p-4 shadow-glow-soft">
+            <img src={tokenMarkAsset.url} alt="$CHI token" className="h-36 w-36 rounded-full object-contain opacity-95 sm:h-40 sm:w-40" />
+          </div>
         </div>
         <div><Eyebrow>Token &amp; ecosystem</Eyebrow><h2 className="section-title">$CHI and ecosystem participation.</h2><p className="mt-6 max-w-2xl text-[1.0625rem] leading-8 text-muted-foreground">$CHI is designed to support ChiCha’s ecosystem by connecting users, agents, participation, access, and long-term ecosystem alignment.</p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">{["Learn about $CHI", "Understand ecosystem participation", "Explore access and eligibility", "Official token information only"].map((item) => <div key={item} className="flex items-center gap-3 text-base leading-7 text-muted-foreground"><img src={tokenMarkAsset.url} alt="" className="h-5 w-5 rounded-full object-contain" />{item}</div>)}</div>
@@ -291,7 +303,7 @@ function Footer() {
   const columns = { Products: ["UCard", "QRush", "Tap to Pay", "Genie"], Company: ["About", "News", "Partnerships", "Careers"], Support: ["Help Center", "Contact Us"], Legal: ["Terms", "Privacy", "Risk Disclosure"] };
   return (
     <footer id="news" className="border-t border-border bg-card/30">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand /><p className="mt-5 max-w-xs text-base leading-7 text-muted-foreground">Stablecoin payments for a more open economy.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
+       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand placement="footer" /><p className="mt-5 max-w-xs text-base leading-7 text-muted-foreground">Stablecoin payments for a more open economy.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">{Object.entries(columns).map(([title, links]) => <div key={title}><p className="text-xs font-semibold uppercase text-foreground">{title}</p><ul className="mt-5 space-y-3">{links.map((link) => <li key={link}><a href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">{link}</a></li>)}</ul></div>)}</div></div>
         <div className="mt-14 border-t border-border pt-7 text-xs text-muted-foreground">© 2026 ChiCha Technology Pte. Ltd. All rights reserved.</div></div>
     </footer>
