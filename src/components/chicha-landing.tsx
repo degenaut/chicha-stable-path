@@ -262,9 +262,10 @@ function TokenSection() {
             $CHI<div className="absolute inset-4 rounded-full border border-primary/20" />
           </div>
         </div>
-        <div><Eyebrow>Token &amp; ecosystem</Eyebrow><h2 className="section-title">A stronger ecosystem together.</h2><p className="mt-6 max-w-2xl leading-7 text-muted-foreground">$CHI is designed to support ChiCha’s ecosystem by connecting users, agents, participation, rewards, access, and long-term ecosystem alignment.</p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">{["Learn about $CHI", "Agent-weighted participation", "Connect users and partners", "Long-term ecosystem alignment"].map((item) => <div key={item} className="flex items-center gap-3 text-sm text-muted-foreground"><Sparkles className="h-4 w-4 text-token" />{item}</div>)}</div>
+        <div><Eyebrow>Token &amp; ecosystem</Eyebrow><h2 className="section-title">$CHI and ecosystem participation.</h2><p className="mt-6 max-w-2xl leading-7 text-muted-foreground">$CHI is designed to support the ChiCha ecosystem by connecting users, merchants, partners, agents, access, participation, and long-term ecosystem alignment.</p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">{["Learn how $CHI works", "Understand ecosystem participation", "Explore access and eligibility", "View official token information"].map((item) => <div key={item} className="flex items-center gap-3 text-sm text-muted-foreground"><Sparkles className="h-4 w-4 text-token" />{item}</div>)}</div>
           <Button variant="glass" size="lg" className="mt-9" asChild><a href="#entrances">Learn About $CHI <ArrowRight /></a></Button>
+          <p className="mt-4 text-xs text-muted-foreground">Token information is subject to official terms, applicable policy, and compliance review.</p>
         </div>
       </div>
     </section>
