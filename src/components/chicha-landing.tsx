@@ -19,7 +19,7 @@ import {
 import heroProductsAsset from "@/assets/chicha-hero-scene.png.asset.json";
 import usersProductsAsset from "@/assets/chicha-users-scene.png.asset.json";
 import merchantTapToPayAsset from "@/assets/chicha-merchant-tap-to-pay.png.asset.json";
-import partnerCafeAsset from "@/assets/chicha-partner-cafe.png.asset.json";
+import partnerStoreAsset from "@/assets/chicha-partner-store.png.asset.json";
 import wordmarkAsset from "@/assets/chicha-wordmark-dark.png.asset.json";
 import cMarkAsset from "@/assets/chicha-c-mark-dark.png.asset.json";
 import tokenMarkAsset from "@/assets/chi-token-icon.png.asset.json";
@@ -223,7 +223,7 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   );
   return (
     <div className="visual-stage p-0">
-      <img src={partnerCafeAsset.url} alt="ChiCha stablecoin payment at a partner café" className="absolute inset-0 h-full w-full object-cover object-center" width={1672} height={941} loading="lazy" />
+      <img src={partnerStoreAsset.url} alt="ChiCha stablecoin payment at a partner retail store" className="absolute inset-0 h-full w-full object-cover object-center" width={1536} height={1024} loading="lazy" />
     </div>
   );
 }
