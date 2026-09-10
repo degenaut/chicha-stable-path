@@ -217,7 +217,7 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   );
   if (visual === "merchant") return (
     <div className="visual-stage p-0">
-      <img src={merchantTapToPayAsset.url} alt="ChiCha Tap to Pay stablecoin payment at a café counter" className="absolute inset-0 h-full w-full object-cover object-[62%_center]" width={1536} height={1024} loading="lazy" />
+      <img src={merchantTapToPayAsset.url} alt="ChiCha Tap to Pay stablecoin payment at a café counter" className="absolute inset-0 h-full w-full object-cover object-right" width={1536} height={1024} loading="lazy" />
     </div>
   );
   return (
