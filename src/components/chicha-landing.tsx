@@ -19,7 +19,7 @@ import {
 import heroProductsAsset from "@/assets/chicha-hero-scene.png.asset.json";
 import usersProductsAsset from "@/assets/chicha-users-scene.png.asset.json";
 import merchantTapToPayAsset from "@/assets/chicha-merchant-tap-to-pay.png.asset.json";
-import partnerStoreAsset from "@/assets/chicha-partner-store.png.asset.json";
+import partnerStoreAsset from "@/assets/chicha-partner-retail.png.asset.json";
 import wordmarkAsset from "@/assets/chicha-wordmark-dark.png.asset.json";
 import cMarkAsset from "@/assets/chicha-c-mark-dark.png.asset.json";
 import tokenMarkAsset from "@/assets/chi-token-icon.png.asset.json";
