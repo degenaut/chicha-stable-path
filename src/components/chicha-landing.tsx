@@ -10,8 +10,6 @@ import {
   HandCoins,
   Linkedin,
   Menu,
-  QrCode,
-  ShieldCheck,
   Store,
   UserRound,
   UsersRound,
@@ -20,7 +18,9 @@ import {
   Youtube,
 } from "lucide-react";
 
-import paymentVisual from "@/assets/chicha-payment-visual.jpg";
+import heroProductsAsset from "@/assets/chicha-hero-products.png.asset.json";
+import usersProductsAsset from "@/assets/chicha-users-products.png.asset.json";
+import merchantCafeAsset from "@/assets/chicha-merchant-cafe.png.asset.json";
 import wordmarkAsset from "@/assets/chicha-wordmark-dark.png.asset.json";
 import cMarkAsset from "@/assets/chicha-c-mark-dark.png.asset.json";
 import tokenMarkAsset from "@/assets/chi-token-mark.png.asset.json";
@@ -157,7 +157,7 @@ function Hero() {
         </div>
         <div className="relative min-h-[440px] lg:min-h-[590px]">
           <div className="absolute inset-0 overflow-hidden rounded-[2rem] border border-border/70 bg-card/30 shadow-2xl">
-            <img src={paymentVisual} alt="Stablecoin wallet, payment card, and contactless payment terminal" className="h-full w-full object-cover" width={1400} height={1100} />
+            <img src={heroProductsAsset.url} alt="ChiCha wallet, UCard, and Tap to Pay payment products" className="h-full w-full object-cover object-[71%_center]" width={1685} height={934} />
             <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
             <img src={cMarkAsset.url} alt="" className="absolute right-5 top-5 h-14 w-14 rounded-full opacity-90 shadow-glow sm:right-8 sm:top-8 sm:h-16 sm:w-16" />
           </div>
@@ -212,29 +212,13 @@ type FeatureProps = {
 
 function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   if (visual === "wallet") return (
-    <div className="visual-stage">
-      <div className="phone-shell">
-        <div className="flex items-center justify-between text-xs text-muted-foreground"><span>ChiCha Wallet</span><ShieldCheck className="h-4 w-4 text-cyan" /></div>
-        <p className="mt-10 text-xs text-muted-foreground">Available balance</p><p className="mt-2 text-3xl font-semibold text-foreground">2,480.00</p>
-        <div className="mt-9 grid grid-cols-3 gap-2">{[WalletCards, QrCode, Nfc].map((Icon, i) => <div key={i} className="flex h-12 items-center justify-center rounded-md bg-muted text-primary"><Icon className="h-5 w-5" /></div>)}</div>
-        <div className="mt-8 space-y-3">{["UCard activity", "Tap to Pay"].map((text) => <div key={text} className="flex items-center justify-between rounded-md border border-border p-3 text-xs text-muted-foreground"><span>{text}</span><span className="text-cyan">Ready</span></div>)}</div>
-      </div>
-      <div className="absolute bottom-10 right-3 w-48 rotate-6 rounded-xl border border-border bg-primary-dark p-5 shadow-2xl sm:right-10"><p className="text-sm font-semibold text-foreground">ChiCha UCard</p><Nfc className="mt-8 text-cyan" /><p className="mt-8 text-xs text-muted-foreground">•••• 2046</p></div>
+    <div className="visual-stage p-0">
+      <img src={usersProductsAsset.url} alt="ChiCha wallet phone, UCard, and payment controls" className="absolute inset-0 h-full w-full object-cover object-[72%_center]" width={1760} height={893} loading="lazy" />
     </div>
   );
   if (visual === "merchant") return (
-    <div className="visual-stage items-center justify-center">
-      <div className="relative w-72 overflow-hidden rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
-        <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan/60 to-transparent" />
-        <div className="mx-auto grid h-28 w-28 place-items-center rounded-full border border-primary/20 bg-background/50 shadow-glow-soft">
-          <div className="relative grid h-20 w-20 place-items-center rounded-full border border-cyan/25 bg-cyan/10 text-cyan">
-            <img src={cMarkAsset.url} alt="" className="h-11 w-11 rounded-full object-contain" />
-            <Nfc className="absolute -right-3 h-7 w-7" aria-hidden="true" />
-          </div>
-        </div>
-        <p className="mt-6 text-lg font-semibold text-foreground">Tap to Pay</p><p className="mt-2 text-sm text-muted-foreground">Ready for supported payments</p>
-        <div className="mt-7 rounded-md border border-border/70 bg-muted p-4"><QrCode className="mx-auto h-20 w-20 text-foreground" /></div>
-      </div>
+    <div className="visual-stage p-0">
+      <img src={merchantCafeAsset.url} alt="ChiCha stablecoin payment accepted at a café counter" className="absolute inset-0 h-full w-full object-cover object-[52%_center]" width={1672} height={941} loading="lazy" />
     </div>
   );
   return (
