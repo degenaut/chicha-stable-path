@@ -36,15 +36,15 @@ const navLinks = [
 
 const roleCards = [
   {
-    title: "I’m a User",
-    copy: "Use stablecoins for everyday payment activity.",
-    cta: "Get Started as User",
+    title: "For Users",
+    copy: "Use stablecoins for supported payment activity.",
+    cta: "Get Started",
     href: "#users",
     icon: UserRound,
     tone: "purple",
   },
   {
-    title: "I’m a Merchant",
+    title: "For Merchants",
     copy: "Accept stablecoin payments online or in person.",
     cta: "Start Accepting Payments",
     href: "#merchants",
@@ -52,17 +52,17 @@ const roleCards = [
     tone: "cyan",
   },
   {
-    title: "I’m a Partner",
-    copy: "Help onboard merchants and expand payment access.",
+    title: "For Partners",
+    copy: "Help expand stablecoin payment access in your market.",
     cta: "Become a Partner",
     href: "#partners",
     icon: UsersRound,
     tone: "purple",
   },
   {
-    title: "Learn About $CHI",
-    copy: "Explore the ecosystem and participation.",
-    cta: "Explore Token",
+    title: "Token & Ecosystem",
+    copy: "Learn how $CHI connects participation, access, and ecosystem alignment.",
+    cta: "Learn About $CHI",
     href: "#token",
     icon: CircleDollarSign,
     tone: "gold",
@@ -128,12 +128,15 @@ function Hero() {
       <div className="hero-glow absolute inset-0" />
       <div className="relative mx-auto grid min-h-[690px] max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:px-10">
         <div className="z-10 max-w-3xl">
-          <Eyebrow>Web3 payment infrastructure</Eyebrow>
+          <Eyebrow>Stablecoin payments, built for everyone</Eyebrow>
           <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] text-foreground sm:text-6xl lg:text-7xl">
-            Web3 payment infrastructure for <span className="text-gradient">stablecoin payments.</span>
+            Send it. Spend it. <span className="text-gradient">Get paid with it.</span>
           </h1>
-          <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            ChiCha helps users, merchants, and partners use stablecoins for real payment activity through non-custodial wallet flows.
+          <p className="mt-5 max-w-2xl text-base font-medium leading-6 text-foreground sm:text-lg">
+            ChiCha is Web3 payment infrastructure for stablecoin payments.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            Use ChiCha to pay, get paid, and manage supported stablecoin payment activity through non-custodial wallet flows.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Button variant="hero" size="lg" asChild><a href="#roles">Get Started <ArrowRight /></a></Button>
@@ -144,7 +147,7 @@ function Hero() {
             </div>
           </div>
           <div className="mt-16 flex items-center gap-4 text-xs uppercase text-muted-foreground">
-            <span>People</span><span className="h-1 w-1 rounded-full bg-primary" /><span>Payments</span><span className="h-1 w-1 rounded-full bg-cyan" /><span>More Possibilities</span>
+            <span>Non-custodial.</span><span className="h-1 w-1 rounded-full bg-primary" /><span>Wallet-native.</span><span className="h-1 w-1 rounded-full bg-cyan" /><span>Built for real payment usage.</span>
           </div>
         </div>
         <div className="relative min-h-[440px] lg:min-h-[590px]">
@@ -181,7 +184,7 @@ function Roles() {
     <section id="roles" className="section-shell">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <Eyebrow>Choose your role</Eyebrow>
-        <h2 className="section-title">How do you want to get started?</h2>
+        <h2 className="section-title">Where do you fit?</h2>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{roleCards.map((item) => <RoleCard key={item.title} item={item} />)}</div>
       </div>
     </section>
@@ -269,13 +272,13 @@ function TokenSection() {
 }
 
 const entrances = [
-  ["User Login", "Open your wallet", UserRound], ["Merchant Login", "Manage your business", Building2], ["Partner Application", "Join the network", UsersRound], ["Token Portal", "Explore $CHI", CircleDollarSign],
+  ["User Login", "Access your ChiCha wallet", UserRound], ["Merchant Login", "Manage your payment activity", Building2], ["Partner Application", "Apply to join the network", UsersRound], ["Token Portal", "View official $CHI information", CircleDollarSign],
 ] as const;
 
 function Entrances() {
   return (
     <section id="entrances" className="section-shell">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><Eyebrow>Account entrances</Eyebrow><h2 className="section-title">Choose your entrance.</h2><p className="mt-4 text-muted-foreground">Already have an account? Jump in here.</p>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><Eyebrow>Account entrances</Eyebrow><h2 className="section-title">Know where you're going? Jump straight in.</h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{entrances.map(([title, copy, Icon]) => <a key={title} href="#" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 rounded-lg border border-border bg-card/50 p-5 transition-all hover:border-primary/50 hover:bg-card"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted text-primary"><Icon /></div><div className="min-w-0"><p className="truncate text-sm font-medium text-foreground">{title}</p><p className="mt-1 truncate text-xs text-muted-foreground">{copy}</p></div><ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-cyan" /></a>)}</div>
       </div>
     </section>
@@ -286,13 +289,13 @@ function Footer() {
   const columns = { Product: ["UCard", "QRush", "Tap to Pay", "Genie"], Company: ["About", "News", "Partnerships", "Careers"], Support: ["Help Center", "Contact Us"], Legal: ["Terms", "Privacy", "Risk Disclosure"] };
   return (
     <footer id="news" className="border-t border-border bg-card/30">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand /><p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">Stablecoin payments for a more open economy.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand /><p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">Send it. Spend it. Get paid with it.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">{Object.entries(columns).map(([title, links]) => <div key={title}><p className="text-xs font-semibold uppercase text-foreground">{title}</p><ul className="mt-5 space-y-3">{links.map((link) => <li key={link}><a href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">{link}</a></li>)}</ul></div>)}</div></div>
-        <div className="mt-14 border-t border-border pt-7 text-xs text-muted-foreground">© 2026 ChiCha. All rights reserved.</div></div>
+        <div className="mt-14 border-t border-border pt-7 text-xs text-muted-foreground">© 2026 ChiCha Technology Pte. Ltd. All rights reserved.</div></div>
     </footer>
   );
 }
 
 export function ChiChaLanding() {
-  return <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground"><Header /><main><Hero /><Roles /><FeatureSection id="users" eyebrow="For users" title="Use stablecoins for everyday payment activity." copy="Prepare, spend, pay, and manage supported stablecoin activity through ChiCha Wallet, UCard, Tap to Pay, and Genie." bullets={["Use supported online and in-person payment flows", "Use UCard for supported spend flows", "Tap to pay with your wallet where supported", "Use Genie for safety and account assistance"]} cta="Explore User Tools" icon={WalletCards} visual="wallet" /><FeatureSection id="merchants" eyebrow="For merchants" title="Accept stablecoin payments online or in person." copy="Accept supported stablecoin payments online with QRush or offline through Tap to Pay / NFC point of sale." bullets={["Online payments with QRush", "Tap to Pay / NFC point of sale", "Zero or minimal integration", "Manage payment activity"]} cta="Explore Merchant Tools" icon={Store} visual="merchant" reverse /><FeatureSection id="partners" eyebrow="For partners" title="Expand payment access together." copy="ChiCha partners and agents help expand stablecoin payment access by supporting merchant onboarding, Tap to Pay adoption, demo education, and ecosystem growth." bullets={["Merchant onboarding opportunities", "Tap to Pay adoption", "Demo education and materials", "Ecosystem participation, subject to policy"]} cta="Become a Partner" icon={UsersRound} visual="partner" note="For partners, agents, and ambassadors." /><TokenSection /><Entrances /></main><Footer /></div>;
+  return <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground"><Header /><main><Hero /><Roles /><FeatureSection id="users" eyebrow="For users" title="Your money. Your wallet. Your control." copy="ChiCha gives you a simple way to hold, spend, and pay with supported stablecoin activity without giving anyone else control of your funds." bullets={["Keep supported stablecoins ready in your wallet", "Use UCard for supported spend flows", "Tap to pay in person with your phone or wallet where supported", "Pay supported payment requests from your wallet", "Use Genie for safety and account assistance"]} cta="Open Your Wallet" icon={WalletCards} visual="wallet" /><FeatureSection id="merchants" eyebrow="For merchants" title="Get paid in stablecoins. Online or in person." copy="ChiCha lets merchants accept supported stablecoin payments through QRush, payment links, QR codes, or Tap to Pay where available." bullets={["Create payment links with QRush Lite", "Integrate QRush into your platform or checkout", "Accept in-person payments with Tap to Pay where supported", "Payments are designed to settle to the merchant's wallet without ChiCha taking custody"]} cta="Start Getting Paid" icon={Store} visual="merchant" reverse /><FeatureSection id="partners" eyebrow="For partners" title="Bring stablecoin payments to your market." copy="ChiCha partners help merchants get set up, educate their communities, and grow payment access where it is needed most." bullets={["Onboard merchants in your area", "Help businesses set up Tap to Pay", "Access training materials and demos", "Grow with the ecosystem, subject to applicable policy"]} cta="Become a Partner" icon={UsersRound} visual="partner" note="For agents, ambassadors, and ecosystem partners. Participation is subject to applicable policy." /><TokenSection /><Entrances /></main><Footer /></div>;
 }
