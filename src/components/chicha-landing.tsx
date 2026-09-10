@@ -5,7 +5,6 @@ import {
   Building2,
   Check,
   ChevronRight,
-  CircleDollarSign,
   Nfc,
   Globe2,
   HandCoins,
@@ -13,7 +12,6 @@ import {
   Menu,
   QrCode,
   ShieldCheck,
-  Sparkles,
   Store,
   UserRound,
   UsersRound,
@@ -23,6 +21,9 @@ import {
 } from "lucide-react";
 
 import paymentVisual from "@/assets/chicha-payment-visual.jpg";
+import wordmarkAsset from "@/assets/chicha-wordmark-dark.png.asset.json";
+import cMarkAsset from "@/assets/chicha-c-mark-dark.png.asset.json";
+import tokenMarkAsset from "@/assets/chi-token-mark.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -38,7 +39,7 @@ const roleCards = [
   {
     title: "For Users",
     copy: "Use stablecoins for supported payment activity.",
-    cta: "Get Started",
+    cta: "Get Started as User",
     href: "#users",
     icon: UserRound,
     tone: "purple",
@@ -64,7 +65,7 @@ const roleCards = [
     copy: "Learn how $CHI connects participation, access, and ecosystem alignment.",
     cta: "Learn About $CHI",
     href: "#token",
-    icon: CircleDollarSign,
+    icon: null,
     tone: "gold",
     secondary: true,
   },
@@ -72,8 +73,8 @@ const roleCards = [
 
 function Brand() {
   return (
-    <a href="#top" className="inline-flex items-center text-xl font-semibold tracking-normal text-foreground" aria-label="ChiCha home">
-      ChiCha<span className="text-cyan">.</span>
+    <a href="#top" className="inline-flex items-center" aria-label="ChiCha home">
+      <img src={wordmarkAsset.url} alt="ChiCha" className="h-9 w-auto object-contain sm:h-10" />
     </a>
   );
 }
@@ -154,6 +155,7 @@ function Hero() {
           <div className="absolute inset-0 overflow-hidden rounded-[2rem] border border-border/70 bg-card/30 shadow-2xl">
             <img src={paymentVisual} alt="Stablecoin wallet, payment card, and contactless payment terminal" className="h-full w-full object-cover" width={1400} height={1100} />
             <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
+            <img src={cMarkAsset.url} alt="" className="absolute right-5 top-5 h-14 w-14 rounded-full opacity-90 shadow-glow sm:right-8 sm:top-8 sm:h-16 sm:w-16" />
           </div>
           <div className="absolute bottom-5 left-5 right-5 grid grid-cols-[minmax(0,1fr)_auto] items-center rounded-lg border border-border bg-background/70 p-4 backdrop-blur-xl sm:bottom-8 sm:left-8 sm:right-8">
             <div className="min-w-0"><p className="text-xs text-muted-foreground">Payment activity</p><p className="mt-1 truncate text-sm font-medium text-foreground">Wallet-native. Non-custodial.</p></div>
@@ -169,10 +171,10 @@ function RoleCard({ item }: { item: (typeof roleCards)[number] }) {
   const Icon = item.icon;
   return (
     <article className={cn("group flex min-h-72 flex-col rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 sm:p-7", "secondary" in item ? "border-border/70 bg-card/35 hover:border-token/40" : "border-border bg-card/65 hover:border-primary/50 hover:shadow-glow-soft")}>
-      <div className={cn("flex h-11 w-11 items-center justify-center rounded-md", item.tone === "cyan" ? "bg-cyan/10 text-cyan" : item.tone === "gold" ? "bg-token/10 text-token" : "bg-primary/15 text-primary")}><Icon /></div>
+      <div className={cn("flex h-11 w-11 items-center justify-center rounded-md", item.tone === "cyan" ? "bg-cyan/10 text-cyan" : item.tone === "gold" ? "bg-token/10 text-token" : "bg-primary/15 text-primary")}>{Icon ? <Icon /> : <img src={tokenMarkAsset.url} alt="$CHI" className="h-9 w-9 rounded-full object-contain" />}</div>
       <h3 className="mt-7 text-xl font-semibold text-foreground">{item.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.copy}</p>
-      <a href={item.href} className="mt-auto inline-flex items-center gap-2 pt-7 text-sm font-medium text-foreground transition-colors group-hover:text-cyan">
+      <p className="mt-3 text-base leading-7 text-muted-foreground">{item.copy}</p>
+      <a href={item.href} className="mt-auto inline-flex items-center gap-2 pt-7 text-base font-medium text-foreground transition-colors group-hover:text-cyan">
         {item.cta}<ChevronRight className="h-4 w-4" />
       </a>
     </article>
@@ -218,8 +220,9 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   );
   if (visual === "merchant") return (
     <div className="visual-stage items-center justify-center">
-      <div className="relative w-72 rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan/10 text-cyan"><Nfc className="h-8 w-8" /></div>
+        <div className="relative w-72 rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
+          <img src={cMarkAsset.url} alt="" className="absolute left-5 top-5 h-8 w-8 rounded-full object-contain" />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-cyan/10 text-cyan"><Nfc className="h-8 w-8" /></div>
         <p className="mt-6 text-lg font-semibold text-foreground">Tap to Pay</p><p className="mt-2 text-sm text-muted-foreground">Ready for supported payments</p>
         <div className="mt-7 rounded-md bg-muted p-4"><QrCode className="mx-auto h-20 w-20 text-foreground" /></div>
       </div>
@@ -242,8 +245,8 @@ function FeatureSection(props: FeatureProps) {
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-24 lg:px-10">
         <div className={cn(props.reverse && "lg:order-2")}>
           <Eyebrow>{props.eyebrow}</Eyebrow><h2 className="section-title">{props.title}</h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground">{props.copy}</p>
-          <ul className="mt-8 space-y-4">{props.bullets.map((bullet) => <li key={bullet} className="flex gap-3 text-sm text-foreground"><span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary"><Check className="h-3 w-3" /></span>{bullet}</li>)}</ul>
+          <p className="mt-6 max-w-xl text-[1.0625rem] leading-8 text-muted-foreground">{props.copy}</p>
+          <ul className="mt-8 space-y-4">{props.bullets.map((bullet) => <li key={bullet} className="flex gap-3 text-base leading-7 text-foreground"><span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary"><Check className="h-3 w-3" /></span>{bullet}</li>)}</ul>
           <Button variant="glass" size="lg" className="mt-9" asChild><a href="#entrances"><Icon />{props.cta}</a></Button>
           {props.note && <p className="mt-4 text-xs text-muted-foreground">{props.note}</p>}
         </div>
@@ -258,12 +261,10 @@ function TokenSection() {
     <section id="token" className="section-shell border-y border-border/60 bg-card/20">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-10">
         <div className="flex min-h-72 items-center justify-center rounded-xl border border-border/60 bg-background/40">
-          <div className="relative flex h-36 w-36 items-center justify-center rounded-full border border-token/25 text-3xl font-semibold text-token">
-            $CHI<div className="absolute inset-4 rounded-full border border-primary/20" />
-          </div>
+          <img src={tokenMarkAsset.url} alt="$CHI token" className="h-40 w-40 rounded-full object-contain opacity-90" />
         </div>
-        <div><Eyebrow>Token &amp; ecosystem</Eyebrow><h2 className="section-title">$CHI and ecosystem participation.</h2><p className="mt-6 max-w-2xl leading-7 text-muted-foreground">$CHI is designed to support the ChiCha ecosystem by connecting users, merchants, partners, agents, access, participation, and long-term ecosystem alignment.</p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">{["Learn how $CHI works", "Understand ecosystem participation", "Explore access and eligibility", "View official token information"].map((item) => <div key={item} className="flex items-center gap-3 text-sm text-muted-foreground"><Sparkles className="h-4 w-4 text-token" />{item}</div>)}</div>
+        <div><Eyebrow>Token &amp; ecosystem</Eyebrow><h2 className="section-title">$CHI and ecosystem participation.</h2><p className="mt-6 max-w-2xl text-[1.0625rem] leading-8 text-muted-foreground">$CHI is designed to support ChiCha’s ecosystem by connecting users, agents, participation, access, and long-term ecosystem alignment.</p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">{["Learn about $CHI", "Understand ecosystem participation", "Explore access and eligibility", "Official token information only"].map((item) => <div key={item} className="flex items-center gap-3 text-base leading-7 text-muted-foreground"><img src={tokenMarkAsset.url} alt="" className="h-5 w-5 rounded-full object-contain" />{item}</div>)}</div>
           <Button variant="glass" size="lg" className="mt-9" asChild><a href="#entrances">Learn About $CHI <ArrowRight /></a></Button>
           <p className="mt-4 text-xs text-muted-foreground">Token information is subject to official terms, applicable policy, and compliance review.</p>
         </div>
@@ -273,24 +274,24 @@ function TokenSection() {
 }
 
 const entrances = [
-  ["User Login", "Access your ChiCha wallet", UserRound], ["Merchant Login", "Manage your payment activity", Building2], ["Partner Application", "Apply to join the network", UsersRound], ["Token Portal", "View official $CHI information", CircleDollarSign],
+  ["User Login", "Open your wallet", UserRound, false], ["Merchant Login", "Manage your payment activity", Building2, false], ["Partner Application", "Apply to join the network", UsersRound, false], ["Token Portal", "View official $CHI information", null, true],
 ] as const;
 
 function Entrances() {
   return (
     <section id="entrances" className="section-shell">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><Eyebrow>Account entrances</Eyebrow><h2 className="section-title">Know where you're going? Jump straight in.</h2>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{entrances.map(([title, copy, Icon]) => <a key={title} href="#" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 rounded-lg border border-border bg-card/50 p-5 transition-all hover:border-primary/50 hover:bg-card"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted text-primary"><Icon /></div><div className="min-w-0"><p className="truncate text-sm font-medium text-foreground">{title}</p><p className="mt-1 truncate text-xs text-muted-foreground">{copy}</p></div><ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-cyan" /></a>)}</div>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><Eyebrow>Account entrances</Eyebrow><h2 className="section-title">Know where you’re going? Jump straight in.</h2>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{entrances.map(([title, copy, Icon, token]) => <a key={title} href="#" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 rounded-lg border border-border bg-card/50 p-5 transition-all hover:border-primary/50 hover:bg-card"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted text-primary">{token ? <img src={tokenMarkAsset.url} alt="$CHI" className="h-8 w-8 rounded-full object-contain" /> : Icon ? <Icon /> : null}</div><div className="min-w-0"><p className="text-base font-medium leading-6 text-foreground">{title}</p><p className="mt-1 text-sm leading-5 text-muted-foreground">{copy}</p></div><ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-cyan" /></a>)}</div>
       </div>
     </section>
   );
 }
 
 function Footer() {
-  const columns = { Product: ["UCard", "QRush", "Tap to Pay", "Genie"], Company: ["About", "News", "Partnerships", "Careers"], Support: ["Help Center", "Contact Us"], Legal: ["Terms", "Privacy", "Risk Disclosure"] };
+  const columns = { Products: ["UCard", "QRush", "Tap to Pay", "Genie"], Company: ["About", "News", "Partnerships", "Careers"], Support: ["Help Center", "Contact Us"], Legal: ["Terms", "Privacy", "Risk Disclosure"] };
   return (
     <footer id="news" className="border-t border-border bg-card/30">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand /><p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">Stablecoin payments for a more open economy.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand /><p className="mt-5 max-w-xs text-base leading-7 text-muted-foreground">Stablecoin payments for a more open economy.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">{Object.entries(columns).map(([title, links]) => <div key={title}><p className="text-xs font-semibold uppercase text-foreground">{title}</p><ul className="mt-5 space-y-3">{links.map((link) => <li key={link}><a href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">{link}</a></li>)}</ul></div>)}</div></div>
         <div className="mt-14 border-t border-border pt-7 text-xs text-muted-foreground">© 2026 ChiCha Technology Pte. Ltd. All rights reserved.</div></div>
     </footer>
@@ -298,5 +299,5 @@ function Footer() {
 }
 
 export function ChiChaLanding() {
-  return <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground"><Header /><main><Hero /><Roles /><FeatureSection id="users" eyebrow="For users" title="Use stablecoins for everyday payment activity." copy="ChiCha gives users a simple way to prepare, spend, pay, and manage supported stablecoin activity through ChiCha Wallet, UCard, Tap to Pay, and Genie." bullets={["Keep supported stablecoins ready in your wallet", "Use UCard for supported spend flows", "Tap to pay with your wallet where supported", "Pay supported payment requests from your wallet", "Use Genie for safety and account assistance"]} cta="Open Your Wallet" icon={WalletCards} visual="wallet" /><FeatureSection id="merchants" eyebrow="For merchants" title="Get paid in stablecoins. Online or in person." copy="ChiCha helps merchants accept supported stablecoin payments online with QRush or offline through Tap to Pay / NFC point of sale." bullets={["Create payment links with QRush Lite", "Integrate QRush into your platform or checkout", "Accept in-person payments with Tap to Pay where supported", "Payments are designed to settle to the merchant's wallet without ChiCha taking custody"]} cta="Start Getting Paid" icon={Store} visual="merchant" reverse /><FeatureSection id="partners" eyebrow="For partners" title="Bring stablecoin payments to your market." copy="ChiCha partners help merchants get set up, educate their communities, and grow payment access where it is needed most." bullets={["Onboard merchants in your area", "Help businesses set up Tap to Pay", "Access training materials and demos", "Grow with the ecosystem, subject to applicable policy"]} cta="Become a Partner" icon={UsersRound} visual="partner" note="For agents, ambassadors, and ecosystem partners. Participation is subject to applicable policy." /><TokenSection /><Entrances /></main><Footer /></div>;
+  return <div className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground"><Header /><main><Hero /><Roles /><FeatureSection id="users" eyebrow="For users" title="Use stablecoins for everyday payment activity." copy="ChiCha gives users a simple way to prepare, spend, pay, and manage supported stablecoin activity through ChiCha Wallet, UCard, Tap to Pay, and Genie." bullets={["Keep supported stablecoins ready in your wallet", "Use UCard for supported spend flows", "Tap to pay with your wallet where supported", "Pay supported payment requests from your wallet", "Use Genie for safety and account assistance"]} cta="Explore User Tools" icon={WalletCards} visual="wallet" /><FeatureSection id="merchants" eyebrow="For merchants" title="Get paid in stablecoins. Online or in person." copy="ChiCha helps merchants accept supported stablecoin payments online with QRush or offline through Tap to Pay / NFC point of sale." bullets={["Online payments with QRush", "Tap to Pay / NFC point of sale", "Zero or minimal integration", "Manage payment activity"]} cta="Explore Merchant Tools" icon={Store} visual="merchant" reverse /><FeatureSection id="partners" eyebrow="For partners" title="Bring stablecoin payments to your market." copy="ChiCha partners help merchants get set up, educate their communities, and grow stablecoin payment access where it is needed most." bullets={["Merchant onboarding opportunities", "Tap to Pay adoption", "Demo education and materials", "Ecosystem participation, subject to policy"]} cta="Become a Partner" icon={UsersRound} visual="partner" note="For partners, agents, and ambassadors." /><TokenSection /><Entrances /></main><Footer /></div>;
 }
