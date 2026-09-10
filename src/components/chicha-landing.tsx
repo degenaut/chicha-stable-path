@@ -6,8 +6,6 @@ import {
   Check,
   ChevronRight,
   Nfc,
-  Globe2,
-  HandCoins,
   Linkedin,
   Menu,
   Store,
