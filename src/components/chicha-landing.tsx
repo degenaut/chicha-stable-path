@@ -16,13 +16,13 @@ import {
   Youtube,
 } from "lucide-react";
 
-import heroProductsAsset from "@/assets/chicha-hero-products.png.asset.json";
-import usersProductsAsset from "@/assets/chicha-users-products.png.asset.json";
+import heroProductsAsset from "@/assets/chicha-hero-scene.png.asset.json";
+import usersProductsAsset from "@/assets/chicha-users-scene.png.asset.json";
 import merchantTapToPayAsset from "@/assets/chicha-merchant-tap-to-pay.png.asset.json";
 import partnerCafeAsset from "@/assets/chicha-partner-cafe.png.asset.json";
 import wordmarkAsset from "@/assets/chicha-wordmark-dark.png.asset.json";
 import cMarkAsset from "@/assets/chicha-c-mark-dark.png.asset.json";
-import tokenMarkAsset from "@/assets/chi-token-mark.png.asset.json";
+import tokenMarkAsset from "@/assets/chi-token-icon.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -156,7 +156,8 @@ function Hero() {
         </div>
         <div className="relative min-h-[440px] lg:min-h-[590px]">
           <div className="absolute inset-0 overflow-hidden rounded-[2rem] border border-border/70 bg-card/30 shadow-2xl">
-            <img src={heroProductsAsset.url} alt="ChiCha wallet, UCard, and Tap to Pay payment products" className="h-full w-full object-cover object-[71%_center]" width={1685} height={934} />
+            <img src={heroProductsAsset.url} alt="ChiCha wallet, UCard, and Tap to Pay payment products" className="h-full w-full object-cover object-[80%_center]" width={1536} height={1024} />
+            <div className="pointer-events-none absolute left-[21%] right-[55%] top-[59%] h-[8%] rounded-md backdrop-blur-[7px]" />
             <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
             <img src={cMarkAsset.url} alt="" className="absolute right-5 top-5 h-14 w-14 rounded-full opacity-90 shadow-glow sm:right-8 sm:top-8 sm:h-16 sm:w-16" />
           </div>
@@ -212,7 +213,7 @@ type FeatureProps = {
 function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   if (visual === "wallet") return (
     <div className="visual-stage p-0">
-      <img src={usersProductsAsset.url} alt="ChiCha wallet phone, UCard, and payment controls" className="absolute inset-0 h-full w-full object-cover object-[72%_center]" width={1760} height={893} loading="lazy" />
+      <img src={usersProductsAsset.url} alt="ChiCha wallet phone, UCard, and payment controls" className="absolute inset-0 h-full w-full object-cover object-[58%_center]" width={1536} height={1024} loading="lazy" />
     </div>
   );
   if (visual === "merchant") return (
