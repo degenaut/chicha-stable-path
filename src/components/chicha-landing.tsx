@@ -223,7 +223,7 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   );
   return (
     <div className="visual-stage p-0">
-      <img src={partnerCafeAsset.url} alt="ChiCha stablecoin payment at a partner café" className="absolute inset-0 h-full w-full object-cover object-center" width={1672} height={941} loading="lazy" />
+      <img src={partnerStoreAsset.url} alt="ChiCha stablecoin payment at a partner retail store" className="absolute inset-0 h-full w-full object-cover object-center" width={1536} height={1024} loading="lazy" />
     </div>
   );
 }
