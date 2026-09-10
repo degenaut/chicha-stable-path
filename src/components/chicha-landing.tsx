@@ -280,7 +280,7 @@ const entrances = [
 function Entrances() {
   return (
     <section id="entrances" className="section-shell">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><Eyebrow>Account entrances</Eyebrow><h2 className="section-title">Know where you're going? Jump straight in.</h2>
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><Eyebrow>Account entrances</Eyebrow><h2 className="section-title">Know where you’re going? Jump straight in.</h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{entrances.map(([title, copy, Icon, token]) => <a key={title} href="#" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 rounded-lg border border-border bg-card/50 p-5 transition-all hover:border-primary/50 hover:bg-card"><div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted text-primary">{token ? <img src={tokenMarkAsset.url} alt="$CHI" className="h-8 w-8 rounded-full object-contain" /> : Icon ? <Icon /> : null}</div><div className="min-w-0"><p className="text-base font-medium leading-6 text-foreground">{title}</p><p className="mt-1 text-sm leading-5 text-muted-foreground">{copy}</p></div><ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-cyan" /></a>)}</div>
       </div>
     </section>
@@ -288,7 +288,7 @@ function Entrances() {
 }
 
 function Footer() {
-  const columns = { Product: ["UCard", "QRush", "Tap to Pay", "Genie"], Company: ["About", "News", "Partnerships", "Careers"], Support: ["Help Center", "Contact Us"], Legal: ["Terms", "Privacy", "Risk Disclosure"] };
+  const columns = { Products: ["UCard", "QRush", "Tap to Pay", "Genie"], Company: ["About", "News", "Partnerships", "Careers"], Support: ["Help Center", "Contact Us"], Legal: ["Terms", "Privacy", "Risk Disclosure"] };
   return (
     <footer id="news" className="border-t border-border bg-card/30">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10"><div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]"><div><Brand /><p className="mt-5 max-w-xs text-base leading-7 text-muted-foreground">Stablecoin payments for a more open economy.</p><div className="mt-7 flex gap-2">{[X, Linkedin, Youtube, UsersRound].map((Icon, i) => <a key={i} href="#" aria-label={["X", "LinkedIn", "YouTube", "Discord"][i]} className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"><Icon className="h-4 w-4" /></a>)}</div></div>
