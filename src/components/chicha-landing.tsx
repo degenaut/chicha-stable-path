@@ -20,7 +20,8 @@ import {
 
 import heroProductsAsset from "@/assets/chicha-hero-products.png.asset.json";
 import usersProductsAsset from "@/assets/chicha-users-products.png.asset.json";
-import merchantCafeAsset from "@/assets/chicha-merchant-cafe.png.asset.json";
+import merchantTapToPayAsset from "@/assets/chicha-merchant-tap-to-pay.png.asset.json";
+import partnerCafeAsset from "@/assets/chicha-partner-cafe.png.asset.json";
 import wordmarkAsset from "@/assets/chicha-wordmark-dark.png.asset.json";
 import cMarkAsset from "@/assets/chicha-c-mark-dark.png.asset.json";
 import tokenMarkAsset from "@/assets/chi-token-mark.png.asset.json";
@@ -218,15 +219,12 @@ function ProductVisual({ visual }: { visual: FeatureProps["visual"] }) {
   );
   if (visual === "merchant") return (
     <div className="visual-stage p-0">
-      <img src={merchantCafeAsset.url} alt="ChiCha stablecoin payment accepted at a café counter" className="absolute inset-0 h-full w-full object-cover object-[52%_center]" width={1672} height={941} loading="lazy" />
+      <img src={merchantTapToPayAsset.url} alt="ChiCha Tap to Pay stablecoin payment at a café counter" className="absolute inset-0 h-full w-full object-cover object-[62%_center]" width={1536} height={1024} loading="lazy" />
     </div>
   );
   return (
-    <div className="visual-stage items-center justify-center">
-      <div className="relative grid h-72 w-72 place-items-center rounded-full border border-primary/20">
-        <div className="grid h-36 w-36 place-items-center rounded-full border border-cyan/30 bg-card text-cyan shadow-glow-soft"><Globe2 className="h-12 w-12" /></div>
-        {[UserRound, Store, HandCoins].map((Icon, i) => <div key={i} className={cn("absolute flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-primary shadow-xl", i === 0 ? "left-2 top-8" : i === 1 ? "right-0 top-20" : "bottom-0 left-20")}><Icon /></div>)}
-      </div>
+    <div className="visual-stage p-0">
+      <img src={partnerCafeAsset.url} alt="ChiCha stablecoin payment at a partner café" className="absolute inset-0 h-full w-full object-cover object-center" width={1672} height={941} loading="lazy" />
     </div>
   );
 }
