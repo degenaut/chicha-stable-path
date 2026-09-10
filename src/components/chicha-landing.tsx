@@ -157,6 +157,7 @@ function Hero() {
         <div className="relative min-h-[440px] lg:min-h-[590px]">
           <div className="absolute inset-0 overflow-hidden rounded-[2rem] border border-border/70 bg-card/30 shadow-2xl">
             <img src={heroProductsAsset.url} alt="ChiCha wallet, UCard, and Tap to Pay payment products" className="h-full w-full object-cover object-[80%_center]" width={1536} height={1024} />
+            <div className="pointer-events-none absolute left-[31%] right-[37%] top-[58%] h-[9%] rounded-md backdrop-blur-[7px]" />
             <div className="absolute inset-0 bg-linear-to-t from-background/60 via-transparent to-transparent" />
             <img src={cMarkAsset.url} alt="" className="absolute right-5 top-5 h-14 w-14 rounded-full opacity-90 shadow-glow sm:right-8 sm:top-8 sm:h-16 sm:w-16" />
           </div>
